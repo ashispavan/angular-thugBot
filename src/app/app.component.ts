@@ -10,13 +10,17 @@ import { DialogFlowService } from './services/dialog-flow.service';
 })
 export class AppComponent {
 
+  public messages: Array<string> = [];
+
   constructor(private dialogService: DialogFlowService) {
 
   }
 
   public askQuestion(question: string): void {
+    this.messages.push(question);
     this.dialogService.askQuestion(question).subscribe((response) => {
-      console.log(response.result.fulfillment.speech);
+      let answer = response.result.fulfillment.speech
+      this.messages.push(answer);
     })
   }
 
