@@ -1,20 +1,21 @@
 .speech-bubble {
 	position: relative;
-	background: #00aabb;
+	background: #000000;
     border-radius: .4em;
     list-style: none;
     margin: 5px;
     height: 48px;
     text-align: center;
     width: 50%;
+    color: white;
 }
 
 .speech-bubble:nth-child(odd) {
-    float: left;
+    float: right;
 }
 
 .speech-bubble:nth-child(even) {
-    float: right;
+    float: left;
 }
 
 ul {
@@ -30,7 +31,7 @@ ul {
 	width: 0;
 	height: 0;
 	border: 20px solid transparent;
-	border-left-color: #00aabb;
+	border-left-color: #000000;
 	border-right: 0;
 	border-bottom: 0;
 	margin-top: -10px;
@@ -45,7 +46,7 @@ ul {
 	width: 0;
 	height: 0;
 	border: 20px solid transparent;
-	border-right-color: #00aabb;
+	border-right-color: #000000;
 	border-left: 0;
 	border-bottom: 0;
 	margin-top: -10px;
