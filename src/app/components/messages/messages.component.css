@@ -18,9 +18,16 @@
     float: left;
 }
 
+.messages {
+    height: 300px;
+}
+
+
 ul {
     margin: 0 auto;
     width: 500px;
+    max-height: 300px;
+    overflow-y: auto;
 }
 
 .speech-bubble:nth-child(even):after {
