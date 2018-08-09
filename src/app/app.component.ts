@@ -18,10 +18,15 @@ export class AppComponent {
 
   public askQuestion(question: string): void {
     this.messages.push(question);
-    this.dialogService.askQuestion(question).subscribe((response) => {
-      let answer = response.result.fulfillment.speech
-      this.messages.push(answer);
-    })
+    this.dialogService.askQuestion(question).subscribe(
+      (response) => {
+        let answer = response.result.fulfillment.speech
+        this.messages.push(answer);
+      },
+      (error) => {
+        this.messages.push(`Sorry, can't talk right now`);
+      }
+    );
   }
 
   title = 'app';
