@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-action',
@@ -12,13 +12,17 @@ export class ActionComponent implements OnInit {
   ngOnInit() {
   }
 
+
   public question: string = '';
 
   @Output() askQuestion: EventEmitter<string> = new EventEmitter<string>();
 
   public askQuery(): void {
     this.askQuestion.emit(this.question);
+    this.question = '';
   }
+
+
 
 
 
