@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MessagesComponent } from './components/messages/messages.component';
 import { DialogFlowService } from './services/dialog-flow.service';
+import { params } from './config/particle.config.js'
 
 
 
@@ -16,6 +18,8 @@ export class AppComponent implements OnInit {
 
   }
 
+  @ViewChild(MessagesComponent) messagesComponent: MessagesComponent;
+
   myStyle: object = {};
   myParams: object = {};
   width: number = 100;
@@ -26,37 +30,31 @@ export class AppComponent implements OnInit {
       'position': 'fixed',
       'width': '100%',
       'height': '100%',
-      'z-index': -1,
       'top': 0,
       'left': 0,
       'right': 0,
       'bottom': 0,
     };
 
-    this.myParams = {
-      particles: {
-        number: {
-          value: 200,
-        },
-        color: {
-          value: '#ff0000'
-        },
-        shape: {
-          type: 'triangle',
-        },
-      }
-    };
+    this.myParams = params;
   }
 
   public askQuestion(question: string): void {
     this.messages.push(question);
+    this.messagesComponent.scrollToBottom();
     this.dialogService.askQuestion(question).subscribe(
       (response) => {
         let answer = response.result.fulfillment.speech
         this.messages.push(answer);
+        setTimeout(() => {
+          this.messagesComponent.scrollToBottom()
+        }, 100
+        );
+
       },
       (error) => {
-        this.messages.push(`Sorry, can't talk right now`);
+        this.messages.push(`Yeah naah I've hit a snag.. What did you do dude?`);
+        this.messagesComponent.scrollToBottom();
       }
     );
   }

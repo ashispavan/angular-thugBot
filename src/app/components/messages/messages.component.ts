@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef, OnChanges, DoCheck } from '@angular/core';
 
 @Component({
   selector: 'app-messages',
@@ -16,10 +16,6 @@ export class MessagesComponent implements OnInit {
   @ViewChild('scrollMe') private myScrollContainer: ElementRef;
 
   @Input() messages: Array<string>;
-
-  ngAfterViewChecked() {
-    this.scrollToBottom();
-  }
 
   public scrollToBottom(): void {
     try {

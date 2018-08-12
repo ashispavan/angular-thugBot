@@ -4,10 +4,12 @@
     border-radius: .4em;
     list-style: none;
     margin: 5px;
-    height: 48px;
+	height: auto;
+	min-height: 40px;
     text-align: center;
     width: 50%;
-    color: white;
+	color: white;
+	padding: 4px;
 }
 
 .speech-bubble:nth-child(odd) {
@@ -28,7 +30,8 @@ ul {
     margin: 0 auto;
     width: 500px;
     max-height: 300px;
-    overflow-y: auto;
+	overflow-y: auto;
+	/*z-index: -5;*/
 }
 
 .speech-bubble:nth-child(even):after {
